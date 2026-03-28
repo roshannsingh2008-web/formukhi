@@ -5,212 +5,170 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Mukhi 💖</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Great+Vibes&display=swap" rel="stylesheet">
-
-<!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{overflow:hidden;}
+
+/* Pages */
+.page{
+  position:absolute;
+  width:100%;
+  height:100vh;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+.active{display:flex;}
+
+/* Floating hearts */
+.heart{
+  position:absolute;
+  bottom:-50px;
+  font-size:20px;
+  animation:floatUp linear infinite;
+  opacity:0.7;
+}
+@keyframes floatUp{
+  to{transform:translateY(-110vh) translateX(30px);opacity:0;}
 }
 
-body {
-  overflow: hidden;
-  background: linear-gradient(135deg, #ffc0cb, #ffd6dc);
+/* Buttons */
+.start-btn,.btn{
+  margin-top:20px;
+  padding:12px 25px;
+  border-radius:25px;
+  border:none;
+  cursor:pointer;
+}
+.start-btn{background:#ff5e7e;color:white;}
+.yes{background:#ff5e7e;color:white;}
+.no{background:#333;color:white;}
+
+/* Card */
+.card{
+  background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(10px);
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  width:90%;
+  max-width:350px;
 }
 
-/* PAGES */
-.page {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+/* Envelope */
+.envelope{
+  font-size:60px;
+  cursor:pointer;
+  transition:0.3s;
 }
+.envelope:hover{transform:scale(1.1);}
 
-.active {
-  display: flex;
+/* Letter */
+.letter{
+  display:none;
+  justify-content:center;
+  align-items:center;
+  height:100%;
 }
-
-/* FLOATING HEARTS */
-.heart {
-  position: absolute;
-  bottom: -50px;
-  font-size: 20px;
-  animation: floatUp linear infinite;
-  opacity: 0.7;
+.paper{
+  background:white;
+  padding:25px;
+  width:80%;
+  max-width:350px;
+  border-radius:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  font-family:'Great Vibes',cursive;
+  font-size:22px;
+  text-align:center;
 }
-
-@keyframes floatUp {
-  to {
-    transform: translateY(-110vh) translateX(30px);
-    opacity: 0;
-  }
-}
-
-/* PAGE 1 */
-#page1 h1 {
-  font-size: 28px;
-  text-align: center;
-  padding: 20px;
-}
-
-.start-btn {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border-radius: 25px;
-  border: none;
-  background: white;
-  color: #ff5e7e;
-  font-size: 18px;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* CARD */
-.card {
-  background: rgba(255,255,255,0.5);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  width: 90%;
-  max-width: 350px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.btn {
-  margin: 10px;
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-}
-
-.yes {
-  background: #ff5e7e;
-  color: white;
-}
-
-.no {
-  background: #333;
-  color: white;
-}
-
-/* PAGE 3 */
-.envelope {
-  width: 200px;
-  height: 140px;
-  background: #fff;
-  position: relative;
-  cursor: pointer;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.letter {
-  display: none;
-  margin-top: 20px;
-  font-family: 'Great Vibes', cursive;
-  font-size: 22px;
-  text-align: center;
-  padding: 20px;
-}
-
-.music {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
-<audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/audio/2023/03/15/audio_5c6d7a69b2.mp3" type="audio/mp3">
-</audio>
-
-<div class="music" onclick="toggleMusic()">🎶</div>
-
 <!-- PAGE 1 -->
-<div class="page active" id="page1">
-  <h1 id="introText">
-    Hi Mukhi 💖<br>
+<div class="page active" id="page1" style="background:white;">
+  <h1 style="font-family:'Great Vibes',cursive;font-size:50px;color:#ff4d6d;">
+    Hi Mukhi 💖
+  </h1>
+
+  <p style="font-size:18px;color:#555;text-align:center;max-width:300px;">
     I made something special for you…<br>
     because you mean the world to me 🌍✨
-  </h1>
+  </p>
+
   <button class="start-btn" onclick="nextPage(2)">Start 💌</button>
 </div>
 
 <!-- PAGE 2 -->
-<div class="page" id="page2">
+<div class="page" id="page2" style="background:#ffc0cb;">
   <div class="card">
-    <img id="gif" src="https://media.tenor.com/qj1YQvY5XJQAAAAC/love-cute.gif" width="120">
+    <img id="gif" src="https://media.tenor.com/8QfS2d9p8pAAAAAC/cute-love.gif" width="120">
     <h2 id="question">Do you love me? 🥺</h2>
     <p id="sub">gopu is all yours 💞</p>
+
     <button class="btn yes" onclick="yesClicked()">YES 💖</button>
     <button class="btn no" id="noBtn" onclick="noClicked()">NO 💔</button>
   </div>
 </div>
 
 <!-- PAGE 3 -->
-<div class="page" id="page3">
-  <div class="envelope" onclick="openLetter()"></div>
+<div class="page" id="page3" style="background:#ffd6dc;">
+  <div class="envelope" onclick="openLetter()">💌</div>
+
   <div class="letter" id="letter">
-    I am all yours Mukhi 💖 <br><br>
-    I will never be enough of you…<br><br>
-    I need you every day, every minute, every second ⏳💞<br><br>
-    I just want our souls to become one…<br>
-    to mix into each other…<br><br>
-    and spend the rest of our lives together ♾️❤️
+    <div class="paper">
+      I am all yours Mukhi 💖 <br><br>
+      From the moment you came into my life… everything changed ✨ <br><br>
+      Your smile, your voice, your presence…  
+      it’s all I ever need 🥺💞 <br><br>
+      I don’t just love you…  
+      I feel you in every heartbeat ❤️ <br><br>
+      I want you today… tomorrow… forever ♾️ <br><br>
+      Just stay with me always 💖
+    </div>
   </div>
 </div>
 
 <script>
 
-/* FLOATING HEARTS */
-function createHearts() {
+/* Hearts */
+function createHearts(){
   for(let i=0;i<20;i++){
-    let heart = document.createElement("div");
+    let heart=document.createElement("div");
     heart.classList.add("heart");
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random()*100+"vw";
-    heart.style.animationDuration = (3+Math.random()*5)+"s";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(3+Math.random()*5)+"s";
     document.body.appendChild(heart);
   }
 }
 createHearts();
 
-/* PAGE SWITCH */
-function nextPage(page) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+/* Page switch */
+function nextPage(page){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   document.getElementById("page"+page).classList.add("active");
 }
 
-/* QUESTION LOGIC */
-let step = 1;
+/* Question logic */
+let step=1;
 
 function noClicked(){
   step++;
 
-  if(step === 2){
+  if(step===2){
     update("Please think again 🥺","itni jaldi haar mat mano 💫",
-    "https://media.tenor.com/Z8ezUHZzcLoAAAAC/cute-sad.gif");
+    "https://media.tenor.com/Wz4RZz3G6xAAAAAC/cute-sad.gif");
   }
-  else if(step === 3){
+  else if(step===3){
     update("Ek aur baar soch lo 😔","kyu aisa kar rhe ho 💔",
-    "https://media.tenor.com/6zjvW7n9n8kAAAAC/cry.gif");
+    "https://media.tenor.com/3h7nRkqM9VgAAAAC/cute-cry.gif");
   }
   else{
     moveButton();
@@ -223,57 +181,33 @@ function update(q,s,g){
   document.getElementById("gif").src=g;
 }
 
-/* ESCAPE BUTTON */
+/* Escape button */
 function moveButton(){
-  let btn = document.getElementById("noBtn");
+  let btn=document.getElementById("noBtn");
   btn.style.position="absolute";
-  btn.style.top = Math.random()*80+"%";
-  btn.style.left = Math.random()*80+"%";
+  btn.style.top=Math.random()*80+"%";
+  btn.style.left=Math.random()*80+"%";
 }
 
-/* YES CLICK */
+/* YES logic */
 function yesClicked(){
   document.getElementById("question").innerText="Hehe 😏 I knew it! I love youuu sooo much 💖💖💖";
   document.getElementById("sub").innerText="";
   document.getElementById("gif").style.display="none";
 
-  setTimeout(()=> nextPage(3),2000);
+  document.getElementById("noBtn").style.display="none";
 
-  /* HEART BURST */
-  for(let i=0;i<10;i++){
-    let h = document.createElement("div");
-    h.innerHTML="💖";
-    h.style.position="absolute";
-    h.style.left="50%";
-    h.style.top="50%";
-    h.style.fontSize="20px";
-    document.body.appendChild(h);
+  let yesBtn=document.querySelector(".yes");
+  yesBtn.innerText="Continue 💖";
 
-    gsap.to(h,{
-      x: Math.random()*200-100,
-      y: Math.random()*200-100,
-      opacity:0,
-      duration:1
-    });
-  }
+  yesBtn.onclick=function(){
+    nextPage(3);
+  };
 }
 
-/* LETTER OPEN */
+/* Open letter */
 function openLetter(){
-  document.getElementById("letter").style.display="block";
-}
-
-/* MUSIC */
-let playing=false;
-function toggleMusic(){
-  let music=document.getElementById("bgMusic");
-  if(!playing){
-    music.play();
-    playing=true;
-  } else {
-    music.pause();
-    playing=false;
-  }
+  document.getElementById("letter").style.display="flex";
 }
 
 </script>
